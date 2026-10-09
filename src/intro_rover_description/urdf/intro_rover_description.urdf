@@ -96,6 +96,8 @@
       link="shoulder_yaw_link" />
     <axis
       xyz="0 0 -1" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="shoulder_pitch_link">
@@ -265,6 +267,8 @@
       link="elbow_roll_link" />
     <axis
       xyz="-1 0 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="wrist_pitch_link">
@@ -376,6 +380,8 @@
       link="wrist_roll_link" />
     <axis
       xyz="1 0 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="fr_swerve_yaw_link">
@@ -487,6 +493,8 @@
       link="fr_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="br_swerve_yaw_link">
@@ -598,6 +606,8 @@
       link="br_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="fl_swerve_yaw_link">
@@ -709,6 +719,8 @@
       link="fl_wheel_link" />
     <axis
       xyz="0 -1 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
   <link
     name="bl_swerve_yaw_link">
@@ -820,5 +832,210 @@
       link="bl_wheel_link" />
     <axis
       xyz="0 -1 0" />
+    <limit effort="100" velocity="10" />
+    <dynamics damping="0.5" friction="0.0" />
   </joint>
+
+  <!-- BEGIN intro_rover gazebo harmonic plugins -->
+  <!-- Harmonic JointPositionController: Float64 on /cmd_pos/<joint> via ros_gz_bridge -->
+  <gazebo reference="base_link">
+    <self_collide>false</self_collide>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>shoulder_yaw</joint_name>
+      <topic>cmd_pos/shoulder_yaw</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>shoulder_pitch</joint_name>
+      <topic>cmd_pos/shoulder_pitch</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>elbow_pitch</joint_name>
+      <topic>cmd_pos/elbow_pitch</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>elbow_roll</joint_name>
+      <topic>cmd_pos/elbow_roll</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>wrist_pitch</joint_name>
+      <topic>cmd_pos/wrist_pitch</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>wrist_roll</joint_name>
+      <topic>cmd_pos/wrist_roll</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>fr_swerve_yaw</joint_name>
+      <topic>cmd_pos/fr_swerve_yaw</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>fr_wheel</joint_name>
+      <topic>cmd_pos/fr_wheel</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>br_swerve_yaw</joint_name>
+      <topic>cmd_pos/br_swerve_yaw</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>br_wheel</joint_name>
+      <topic>cmd_pos/br_wheel</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>fl_swerve_yaw</joint_name>
+      <topic>cmd_pos/fl_swerve_yaw</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>fl_wheel</joint_name>
+      <topic>cmd_pos/fl_wheel</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>bl_swerve_yaw</joint_name>
+      <topic>cmd_pos/bl_swerve_yaw</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>bl_wheel</joint_name>
+      <topic>cmd_pos/bl_wheel</topic>
+      <p_gain>50</p_gain>
+      <i_gain>1</i_gain>
+      <d_gain>1</d_gain>
+      <i_max>10</i_max>
+      <i_min>-10</i_min>
+      <cmd_max>100</cmd_max>
+      <cmd_min>-100</cmd_min>
+    </plugin>
+  </gazebo>
+  <!-- END intro_rover gazebo harmonic plugins -->
 </robot>
